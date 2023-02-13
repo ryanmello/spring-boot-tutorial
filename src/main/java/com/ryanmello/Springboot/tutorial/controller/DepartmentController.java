@@ -1,6 +1,7 @@
 package com.ryanmello.Springboot.tutorial.controller;
 
 import com.ryanmello.Springboot.tutorial.entity.Department;
+import com.ryanmello.Springboot.tutorial.error.DepartmentNotFoundException;
 import com.ryanmello.Springboot.tutorial.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Department getDepartmentById(@PathVariable("id") Long departmentId){
+    public Department getDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.getDepartmentById(departmentId);
     }
 
